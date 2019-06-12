@@ -1,0 +1,17 @@
+Lecture 2-CS231n
+    Object Recognition is the task of being given an image and from that image trying to associate it to a class or category (e.g. given a picture of a cat identify it as a cat)
+    Challenges:
+        Semantic Gap: How we view an image is very different from a computer since we view things with a sense of intuition but a computer 
+                      can only see things as pixel values, and thus small changes in the picture can make it difficult for a computer
+                      to identify something as a cat
+        Viewpoint Variation: A change of angle vastly changes the pixel values in a region
+        Illumination: Lighting changes pixel values (e.g. in a bright light on a black and white image it would tend towards white as opposed to a dark
+                                                          image which would be dark)
+        Deformation: When the actual object that is trying to be predicted on changes position (e.g. a sitting human vs a standing human)
+        Occlusion: When some parts of the object are hidden 
+        Background Clutter: When the background looks similar to the object being identified
+        Intraclass Differentiaton: When different objects of a class look different but are still part of the same class (e.g. differnt types of monkeys)
+    Because of these challenges it is very difficult to code an "algorithm" or set step procedure to identify these photos
+    Thus we have adopted a data driven approach where we say given this data and what class it should be in we will try to minimize the error of prediction 
+    (through optimizing a loss function with respect to weights in terms of a NN) 
+    
