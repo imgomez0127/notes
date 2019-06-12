@@ -14,4 +14,33 @@ Lecture 2-CS231n
     Because of these challenges it is very difficult to code an "algorithm" or set step procedure to identify these photos
     Thus we have adopted a data driven approach where we say given this data and what class it should be in we will try to minimize the error of prediction 
     (through optimizing a loss function with respect to weights in terms of a NN) 
-    
+    First Algorithm : Knn -> does a normal NN algorithm which compares distances between two images and assigns the class to the nearest neighbors class
+                             In this case we are computing the manhattan or L1 distance which takes the absolute value of the matrix difference between the 
+                             current item and the rest of the dataset. Then sum up all the pixels in the image, afterwards you choose take the largest occurance
+                             of a class between the nearest points and assign it to the class that occurs most often
+                             Another important note is that there is an L1 vs L2 computation where L1 is the difference and L2 is the euclidean distance formula
+                             Sometimes when u know about the space of topology the data it will end up fitting better to the data since it forms a square around
+                             the origin and thus by changing the coordinate plane it will change the L1 distance as opposed to L2 since it creates a circle
+                             
+                             One way you can understand this difference is that the square will tend more towards the coordinate plane so in an x-y plane
+                             decision boundaries will tend to be more verticle or horizontal as opposed to L2 decision boundaries which will be any orientation
+                    
+                             Thus using L1 would be preferrible when the coordinate system actually has meaning (e.g. having a vector for movies where it contains the 
+                             box office price, whether the movie as won a grammy, amount of popular actors, etc.) which can have a big influence on the classification
+                            
+                    Problems with KNN:
+                             Some of the problems with KNN are that the vector distance between two images does not really gauge the relationship between images
+                             and transformations on this image cannot really be well represented by the euclidean distance, another problem is that for KNN you will
+                             need a densly populated data space meaning you need a lot of images which will cover the coordinate plane so that images are not only classified
+                             by one example. One problem about this is that as dimensionality increases the amount of images you need to cover this data space increases
+                             exponentially
+    Second Algorithm : Linear Classifier -> given a dataset constructs a weight matrix which will act as a sort of "pattern recognition" and allows a more general representation
+                                            of the data. This is computed by a dot product of the weights represented as W or Theta and can have an adition bias term which
+                                            will make the data tend towrads some output. To train this we can try a loss function like MSE or MAE and then for t amount of iterations
+                                            compute the derivative of the error in respect to weights and finally update the weights by traversing down the gradient 
+                                            (aka subtracting the derivative, this is also know as gradient descent)
+                        Problems with Linear Classfier:
+                                            One problem is that this classifier tries to get a general mean representation of the dataset and can only use this 
+                                            representation for the whole thing. Another way to inerpret this is that linear classifiers can only draw linear boundaries
+                                            and more complex data will need higher dimensional decision boundaries to be drawn to seperate classes. Also it can struggle in 
+                                            situations of discrete classifications (odd vs even) modal (some section is one class and anything else is another) 
